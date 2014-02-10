@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Interface module for talking with the materials backend.
+ */
+
+/**
+ * This hook is run at the beginning of the page request
+ */
+function ding_entity_position_init() {
+  // Array of ding entity paths
+  $paths = array(
+    'search/ting',
+    'ting/object',
+    'ting/collection',
+  );
+
+  $path = $_GET['q']; // Get page path
+  $pathTrimmed = trim($path, '/'); // normalise with no leading or trailing slash
+  $pathTokens = explode('/', $pathTrimmed); // get segments delimited by a slash
+
+  // Enable styles for pages only where ding_entity buttons available
+  if (in_array($pathTokens[0] . "/" . $pathTokens[1], $paths)) {
+    drupal_add_css(drupal_get_path('module', 'ding_entity_position') . '/css/styles.css');
+  }
+}

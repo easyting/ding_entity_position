@@ -1,0 +1,7 @@
+name = Ding entity position
+description = Set entity buttons position.
+package = Ding!
+version = "7.x-1.18"
+core = 7.x
+
+dependencies[] = ding_entity

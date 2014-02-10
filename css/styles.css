@@ -1,0 +1,22 @@
+.field-type-ding-entity-buttons {
+  float: right;
+  text-align: right;
+}
+
+.page-ting-collection .field-type-ding-entity-buttons .reservation-link-ajax a {
+  padding: 0;
+}
+
+.page-search-ting .bookmark-link-ajax,
+.page-ting-collection .bookmark-link-ajax {
+  float: none;
+}
+
+.page .reservation-link-ajax a:link,
+.page .reservation-link-ajax a:visited {
+  margin-right: 0;
+}
+
+.page-ting-object .bookmark-link-ajax {
+  margin-left: 10px;
+}
