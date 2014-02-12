@@ -7,7 +7,7 @@
 /**
  * This hook is run at the beginning of the page request
  */
-function ding_entity_position_init() {
+function ding_entity_position_preprocess_page(&$variables) {
   // Array of ding entity paths
   $paths = array(
     'search/ting',
@@ -15,12 +15,13 @@ function ding_entity_position_init() {
     'ting/collection',
   );
 
-  $path = $_GET['q']; // Get page path
-  $pathTrimmed = trim($path, '/'); // normalise with no leading or trailing slash
-  $pathTokens = explode('/', $pathTrimmed); // get segments delimited by a slash
+  $path = current_path();
+  $module_path = drupal_get_path('module', 'ding_entity_position');
 
-  // Enable styles for pages only where ding_entity buttons available
-  if (in_array($pathTokens[0] . "/" . $pathTokens[1], $paths)) {
-    drupal_add_css(drupal_get_path('module', 'ding_entity_position') . '/css/styles.css');
+  foreach ($paths as $value) {
+    if (strpos($path, $value) === 0) {
+      drupal_add_css($module_path . '/css/ding_entity_position.styles.css', 'file');
+      break;
+    }
   }
 }
