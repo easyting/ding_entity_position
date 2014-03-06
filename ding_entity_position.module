@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Interface module for talking with the materials backend.
+ */
+
+/**
+ * This hook is run at the beginning of the page request
+ */
+function ding_entity_position_preprocess_page(&$variables) {
+  // Array of ding entity paths
+  $paths = array(
+    'search/ting',
+    'ting/object',
+    'ting/collection',
+  );
+
+  $path = current_path();
+  $module_path = drupal_get_path('module', 'ding_entity_position');
+
+  foreach ($paths as $value) {
+    if (strpos($path, $value) === 0) {
+      drupal_add_css($module_path . '/css/ding_entity_position.styles.css', 'file');
+      break;
+    }
+  }
+}
